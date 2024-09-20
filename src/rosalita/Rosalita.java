@@ -1,144 +1,116 @@
+
 package rosalita;
 
 import java.util.Scanner;
 
-
 public class Rosalita {
-    
+
    
     public static void main(String[] args) {
-        
-            //Grades grd = new Grades();
-        //grd.getGrades();
-        
-        //Product pr = new Product();
-      
-       //System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10.5s\n",
-                // "Product ID", "Name" , "Price" , "Stocks" , "Status" , "Tep");
-       
-       //pr.AddProduct(10011, "Soap", 20, 10, 200);
-       //pr.viewProduct();
-       
-      // Product pr1 = new Product();
-       //pr1.AddProduct(10012, "Cards", 50, 0, 0);
-       //pr1.viewProduct();
-       
-       Scanner s = new Scanner(System.in);
-        Accounts[] acc = new Accounts[100];
-       
-        int no, i, id;
-
-        System.out.print("Enter number of Accounts: ");
-        no = s.nextInt();
-
-        for (i = 0; i < no; i++) {
-            acc[i] = new Accounts();
+          //PRODUCT//
          
-            boolean identi;
-            boolean email1;
-            boolean username;
-           
-            System.out.println("Enter account Details " + (i + 1) + ": ");
-            while (true) {
-                System.out.print("Enter ID: ");
-                id = s.nextInt();
-                identi = false;
+      /* products[] pr = new products[100];
+            
+     Scanner sc = new Scanner(System.in);
 
-               
-                for (int x = 0; x < i; x++) {
-                    if (acc[x] != null && acc[x].id == id) {
-                        identi = true;
-                        break;
-                    }
-                }
+       int nump, i;
 
-                if (identi) {
-                    System.out.println(" - ID already exists. Try again -");
-                } else {
-                   
-                    acc[i].id = id;
-                    break;
-                }
-            }
-           
-            System.out.print("First Name: ");
-            String fname = s.next();
-            System.out.print("Last Name: ");
-            String lname = s.next();
-           
-             while (true) {
-                System.out.print("Email: ");
-                String email = s.next();
-                email1 = false;
+       System.out.print("Enter the number of products: ");
+       nump = sc.nextInt();
 
-               
-                for (int x = 0; x < i; x++) {
-                    if (acc[x] != null && acc[x].email.equals(email)) {
-                        email1 = true;
-                        break;
-                    }
-                }
+       for (i = 0; i < nump; i++) {
+           System.out.println("Enter details of product " + (i + 1) + ": ");
+            
+           System.out.print("ID: ");
+            int id = sc.nextInt();
 
-                if (email1) {
-                    System.out.println(" - Email already exists. Try again -");
-                } else {
-                   
-                    acc[i].email = email;
-                    break;
-                }
-            }
-           
-             while (true) {
-                System.out.print("Username: ");
-                String user = s.next();
-                username = false;
+          System.out.print("Name: ");
+           String name = sc.next();
 
-               
-                for (int x = 0; x < i; x++) {
-                    if (acc[x] != null && acc[x].username.equals(user)) {
-                        username = true;
-                        break;
-                    }
-                }
+          System.out.print("Price: ");
+            double pri = sc.nextDouble();
 
-                if (username) {
-                    System.out.println(" - Username already exists. Try again -");
-                } else {
-                   
-                    acc[i].username = user;
-                    break;
-                }
-            }
-           
-            boolean passValid = false;
-           
-            while (!passValid) {
-                System.out.print("Password: ");
-                String password = s.next();
+            System.out.print("Stock: ");
+          /int st = sc.nextInt();
+            
+            System.out.print("Sold: ");
+           int sold = sc.nextInt();
+            
+           products prod = new products();
+           prod.addProduct(id, name, st, pri, sold);
 
-                if (acc[i].passwordVerify(password)) {
-                     acc[i].addAccount(acc[i].id, fname, lname, acc[i].email, acc[i].username, password);
-                    passValid = true;  
-                } else {
-                    System.out.println(" - Invalid password - , Try Again ");
-                }
-            }
-            System.out.println("");
-       
-
+            
+          pr[i] = prod;
         }
-        System.out.println("Account Details: ");
-         System.out.printf("%-10s %-10s %-10s %-20s %-13s %-10s\n","ID", "FirstName", "LastName", "Email", "Username", "Password");
-         System.out.println("---------------------------------------------------------------------------------");
-        for (i = 0; i < no; i++) {
-            if(acc[i] != null){
-            acc[i].viewAccount();
-            System.out.println("");
-        }
-        }
-    
+
+       System.out.println("----------------------");
+        System.out.println("\nProduct Details:/n");
+       System.out.println("----------------------");
         
-     
+      System.out.printf("%-10s %-20s %-10s %-20s %-20s %-20s %-20s %-20s\n", 
+                      //    "ID", "Name", "Stocks", "Price", "Items Sold", "Total Expected Profit", "Total Profit", "Status");
+        
+       for (i = 0; i < nump; i++) {
+           pr[i].viewProduct();
+        }
+
+        sc.close(); 
     }
-    
 }
+*/
+      // GRADES//
+     /* 
+        public static void main(String[] args) {
+             Grades grd = new Grades();
+                 grd.getGrade();*/
+     
+     
+      Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter number of accounts to register: ");
+        int numberOfAccounts = scanner.nextInt();
+        scanner.nextLine();
+
+        Accounts accounts = new Accounts(numberOfAccounts);
+
+        for (int i = 0; i < numberOfAccounts; i++) {
+            System.out.println("Enter details for account " + (i + 1) + ":");
+       
+            System.out.print("First Name: ");
+            String firstName = scanner.nextLine();
+
+            System.out.print("Last Name: ");
+            String lastName = scanner.nextLine();
+
+            System.out.print("Email: ");
+            String email = scanner.nextLine();
+
+            System.out.print("Username: ");
+            String username = scanner.nextLine();
+
+            String password;
+            do {
+                System.out.print("Password: ");
+                password = scanner.nextLine();
+                if (!accounts.isPasswordValid(password)) {
+                    System.out.println("Invalid password. Please try again.");
+                }
+            } while (!accounts.isPasswordValid(password));
+
+            Account newAccount = new Account(firstName, lastName, email, username, password);
+            if (accounts.addAccount(newAccount)) {
+                System.out.println("Account added successfully.");
+            } else {
+                System.out.println("Failed to add account due to duplicate information.");
+            }
+        }
+
+        System.out.println("\nAll registered accounts:");
+        accounts.viewAccounts(); 
+
+        scanner.close();
+    }
+}
+
+    
+    
